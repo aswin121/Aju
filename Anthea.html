@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Love Story & Memories</title>
+<style>
+  /* Reset & base */
+  body, html {
+    margin: 0; padding: 0; scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff0f5;
+    color: #4b2e48;
+  }
+  h1, h2, h3 {
+    font-family: 'Georgia', serif;
+  }
+  a {
+    color: #b8416a;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    animation: fadeInDown 1.5s ease forwards;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    animation: textGlow 3s infinite alternate;
+  }
+  header p {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #a0526a;
+    animation: fadeInUp 1.8s ease;
+  }
+
+  /* Navigation */
+  nav {
+    text-align: center;
+    margin: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    animation: fadeInUp 2s ease;
+  }
+  nav a {
+    margin: 0 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: transform 0.3s ease;
+  }
+  nav a:hover {
+    transform: scale(1.1) rotate(-2deg);
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    background: #b8416a;
+    height: 3px;
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    transition: 0.3s ease;
+    border-radius: 5px;
+  }
+  nav a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Sections */
+  section {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(184, 65, 106, 0.15);
+    margin-bottom: 30px;
+    animation: fadeInScale 1s ease forwards;
+  }
+
+  /* Love Story Timeline */
+  .timeline {
+    border-left: 4px solid #b8416a;
+    margin-left: 15px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .event {
+    position: relative;
+    margin-bottom: 30px;
+    animation: slideInLeft 1s ease forwards;
+  }
+  .event::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background: #b8416a;
+    border-radius: 50%;
+    border: 3px solid #fff0f5;
+    box-shadow: 0 0 10px 2px rgba(184, 65, 106, 0.5);
+    animation: pulse 2s infinite;
+  }
+
+  /* Memories Gallery */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    animation: fadeIn 1.5s ease;
+  }
+  .gallery img {
+    flex: 1 1 calc(25% - 15px);
+    /* max-width: 100%; */
+    height: 150px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .gallery img:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 8px 20px rgba(184, 65, 106, 0.5);
+    animation: glow 1s ease infinite alternate;
+    height: 100%;
+  }
+  .gallery video {
+    flex: 1 1 calc(25% - 15px);
+    /* max-width: 100%; */
+    height: 150px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .gallery video:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 8px 20px rgba(184, 65, 106, 0.5);
+    animation: glow 1s ease infinite alternate;
+    height: 100%;
+  }
+
+  /* Wishes */
+  .wishes, .birthday-wishes {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #88304e;
+    padding: 15px;
+    border-left: 5px solid #b8416a;
+    background: #fff5f8;
+    border-radius: 10px;
+    animation: slideInRight 1.2s ease forwards;
+  }
+  .birthday-wishes {
+    background: #fff0f5;
+    color: #7f3a57;
+  }
+  .birthday-wishes ul {
+    padding-left: 20px;
+    margin-top: 15px;
+  }
+  .birthday-wishes li {
+    margin-bottom: 10px;
+    font-weight: 500;
+    animation: fadeIn 2s ease;
+  }
+
+  /* Animated Hearts */
+  .heart {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: beat 1s infinite;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #b8416a;
+    border-radius: 50%;
+  }
+  .heart::before {
+    top: 0;
+    left: 10px;
+  }
+  .heart::after {
+    left: 0;
+    top: -10px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #b8416a;
+    padding: 20px;
+    animation: fadeInUp 2s ease;
+  }
+
+  /* Animations */
+  @keyframes fadeInDown {
+    0% {opacity: 0; transform: translateY(-40px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeInUp {
+    0% {opacity: 0; transform: translateY(40px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  @keyframes fadeInScale {
+    0% {opacity:0; transform: scale(0.9);}
+    100% {opacity:1; transform: scale(1);}
+  }
+  @keyframes slideInLeft {
+    0% {opacity: 0; transform: translateX(-50px);}
+    100% {opacity: 1; transform: translateX(0);}
+  }
+  @keyframes slideInRight {
+    0% {opacity: 0; transform: translateX(50px);}
+    100% {opacity: 1; transform: translateX(0);}
+  }
+  @keyframes textGlow {
+    from {text-shadow: 0 0 5px #b8416a;}
+    to {text-shadow: 0 0 20px #ff8bb2, 0 0 30px #b8416a;}
+  }
+  @keyframes glow {
+    from {box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);}
+    to {box-shadow: 0 8px 25px rgba(255, 120, 160, 0.7);}
+  }
+  @keyframes beat {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.2); }
+  }
+  @keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.3);}
+    100% {transform: scale(1);}
+  }
+
+  /* Scroll reveal effect */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 900px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    nav a {
+      font-size: 0.95rem;
+    }
+    .gallery img {
+      flex: 1 1 calc(50% - 10px);
+      height: auto;
+    }
+  }
+  @media (max-width: 600px) {
+    header p {
+      font-size: 1rem;
+    }
+    header h1 {
+      font-size: 1.75rem;
+    }
+    .gallery img {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+    .event h3 {
+      font-size: 1.1rem;
+    }
+    .wishes, .birthday-wishes {
+      font-size: 1rem;
+    }
+    nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Our Love Story & Memories<span class="heart"></span></h1>
+  <p>A journey of us, cherished moments & dreams ahead</p>
+</header>
+
+<nav>
+  <a href="#birthday">Birthday Wishes</a>
+  <a href="#story">Love Story</a>
+  <a href="#memories">Memories</a>
+  <a href="#wishes">Wishes</a>
+</nav>
+
+<div class="container">
+
+<section id="birthday" class="reveal">
+  <h2>Birthday Wishes & Dreams</h2>
+  <p class="birthday-wishes">
+    Here are some special birthday wishes and dreams I have for you and us:
+    <ul>
+      <li>Happy Birthday, my love! Every moment with you is a blessing...</li>
+      <li>On your special day, I dream of traveling the world hand in hand...</li>
+      <li>I wish to celebrate many more birthdays with you...</li>
+      <li>You are the light of my life, and this birthday I promise...</li>
+      <li>My desire is simply to wake up next to you forever.</li>
+    </ul>
+  </p>
+</section>
+
+<section id="story" class="reveal">
+  <h2>Our Love Story Timeline</h2>
+  <div class="timeline">
+    <div class="event"><h3>First Met - January 2019</h3><p>It all started that chilly winter evening...</p></div>
+    <div class="event"><h3>First Date - February 2019</h3><p>Our hearts spoke loudest over candlelight...</p></div>
+    <div class="event"><h3>Trip to Paris - Summer 2021</h3><p>Under the Eiffel Tower, we promised forever...</p></div>
+    <div class="event"><h3>Moved in Together - December 2023</h3><p>Building a home filled with love...</p></div>
+    <div class="event"><h3>Looking Forward</h3><p>Our journey continues hand in hand...</p></div>
+  </div>
+</section>
+
+<section id="memories" class="reveal">
+  <h2>Precious Memories Gallery</h2>
+  <div class="gallery">
+    <img src="./Gallery/shared image.jpg" alt="Winter memories"/>
+    <img src="./Gallery//shared image (1).jpg" alt="Coffee date"/>
+    <img src="./Gallery//shared image (2).jpg" alt="Paris trip"/>
+    <img src="./Gallery/shared image (3).jpg" alt="Happy together"/>
+    <img src="./Gallery/shared image (4).jpg" alt="Winter memories"/>
+    <img src="./Gallery//shared image (5).jpg" alt="Paris trip"/>
+    <img src="./Gallery/shared image (6).jpg" alt="Happy together"/>
+    <img src="./Gallery/shared image (7).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (8).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (9).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (10).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (11).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (12).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (13).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (14).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (15).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (16).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (17).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (18).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (19).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (20).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (21).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (22).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (23).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (24).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (25).jpg" alt="Winter memories"/>
+    <img src="./Gallery/shared image (26).png" alt="Winter memories"/>
+    <video controls>
+      <source src="./Gallery/Shared Video.mp4" type="video/mp4" />
+    </video>
+  </div>
+</section>
+
+<section id="wishes" class="reveal">
+  <h2>My Wishes for Us</h2>
+  <p class="wishes">
+    My love, may every day bring us closer...
+    Here's to a lifetime of memories, love, and happiness - together forever.<span class="heart"></span>
+  </p>
+</section>
+
+</div>
+
+<footer>
+  Made with ❤ for you.
+</footer>
+
+<script>
+  // Scroll reveal animation
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    for (const reveal of reveals) {
+      const windowHeight = window.innerHeight;
+      const revealTop = reveal.getBoundingClientRect().top;
+      const revealPoint = 150;
+      if (revealTop < windowHeight - revealPoint) {
+        reveal.classList.add('active');
+      } else {
+        reveal.classList.remove('active');
+      }
+    }
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+</body>
+</html>
