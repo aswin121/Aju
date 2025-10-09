@@ -1,431 +1,774 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Our Love Story & Memories</title>
-<style>
-  /* Reset & base */
-  body, html {
-    margin: 0; padding: 0; scroll-behavior: smooth;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fff0f5;
-    color: #4b2e48;
-  }
-  h1, h2, h3 {
-    font-family: 'Georgia', serif;
-  }
-  a {
-    color: #b8416a;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Love Story & Memories</title>
+  <style>
+    /* Reset & base */
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff0f5;
+      color: #4b2e48;
+    }
 
-  /* Container */
-  .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-  }
+    h1,
+    h2,
+    h3 {
+      font-family: 'Georgia', serif;
+    }
 
-  /* Header */
-  header {
-    text-align: center;
-    padding: 40px 20px 20px;
-    animation: fadeInDown 1.5s ease forwards;
-  }
-  header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    line-height: 1.3;
-    animation: textGlow 3s infinite alternate;
-  }
-  header p {
-    font-style: italic;
-    font-size: 1.2rem;
-    color: #a0526a;
-    animation: fadeInUp 1.8s ease;
-  }
+    a {
+      color: #b8416a;
+      text-decoration: none;
+    }
 
-  /* Navigation */
-  nav {
-    text-align: center;
-    margin: 25px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    animation: fadeInUp 2s ease;
-  }
-  nav a {
-    margin: 0 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    position: relative;
-    padding-bottom: 5px;
-    transition: transform 0.3s ease;
-  }
-  nav a:hover {
-    transform: scale(1.1) rotate(-2deg);
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    background: #b8416a;
-    height: 3px;
-    width: 0;
-    left: 50%;
-    bottom: 0;
-    transition: 0.3s ease;
-    border-radius: 5px;
-  }
-  nav a:hover::after {
-    width: 100%;
-    left: 0;
-  }
+    a:hover {
+      text-decoration: underline;
+    }
 
-  /* Sections */
-  section {
-    background: white;
-    padding: 25px 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 15px rgba(184, 65, 106, 0.15);
-    margin-bottom: 30px;
-    animation: fadeInScale 1s ease forwards;
-  }
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
 
-  /* Love Story Timeline */
-  .timeline {
-    border-left: 4px solid #b8416a;
-    margin-left: 15px;
-    padding-left: 20px;
-    position: relative;
-  }
-  .event {
-    position: relative;
-    margin-bottom: 30px;
-    animation: slideInLeft 1s ease forwards;
-  }
-  .event::before {
-    content: '';
-    position: absolute;
-    left: -14px;
-    top: 5px;
-    width: 15px;
-    height: 15px;
-    background: #b8416a;
-    border-radius: 50%;
-    border: 3px solid #fff0f5;
-    box-shadow: 0 0 10px 2px rgba(184, 65, 106, 0.5);
-    animation: pulse 2s infinite;
-  }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      animation: fadeInDown 1.5s ease forwards;
+    }
 
-  /* Memories Gallery */
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    animation: fadeIn 1.5s ease;
-  }
-  .gallery img {
-    flex: 1 1 calc(25% - 15px);
-    /* max-width: 100%; */
-    height: 150px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
-    cursor: pointer;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .gallery img:hover {
-    transform: scale(1.08) rotate(2deg);
-    box-shadow: 0 8px 20px rgba(184, 65, 106, 0.5);
-    animation: glow 1s ease infinite alternate;
-    height: 100%;
-  }
-  .gallery video {
-    flex: 1 1 calc(25% - 15px);
-    /* max-width: 100%; */
-    height: 150px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
-    cursor: pointer;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .gallery video:hover {
-    transform: scale(1.08) rotate(2deg);
-    box-shadow: 0 8px 20px rgba(184, 65, 106, 0.5);
-    animation: glow 1s ease infinite alternate;
-    height: 100%;
-  }
-
-  /* Wishes */
-  .wishes, .birthday-wishes {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #88304e;
-    padding: 15px;
-    border-left: 5px solid #b8416a;
-    background: #fff5f8;
-    border-radius: 10px;
-    animation: slideInRight 1.2s ease forwards;
-  }
-  .birthday-wishes {
-    background: #fff0f5;
-    color: #7f3a57;
-  }
-  .birthday-wishes ul {
-    padding-left: 20px;
-    margin-top: 15px;
-  }
-  .birthday-wishes li {
-    margin-bottom: 10px;
-    font-weight: 500;
-    animation: fadeIn 2s ease;
-  }
-
-  /* Animated Hearts */
-  .heart {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 6px;
-    position: relative;
-    transform: rotate(-45deg);
-    animation: beat 1s infinite;
-  }
-  .heart::before,
-  .heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #b8416a;
-    border-radius: 50%;
-  }
-  .heart::before {
-    top: 0;
-    left: 10px;
-  }
-  .heart::after {
-    left: 0;
-    top: -10px;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #b8416a;
-    padding: 20px;
-    animation: fadeInUp 2s ease;
-  }
-
-  /* Animations */
-  @keyframes fadeInDown {
-    0% {opacity: 0; transform: translateY(-40px);}
-    100% {opacity: 1; transform: translateY(0);}
-  }
-  @keyframes fadeInUp {
-    0% {opacity: 0; transform: translateY(40px);}
-    100% {opacity: 1; transform: translateY(0);}
-  }
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  @keyframes fadeInScale {
-    0% {opacity:0; transform: scale(0.9);}
-    100% {opacity:1; transform: scale(1);}
-  }
-  @keyframes slideInLeft {
-    0% {opacity: 0; transform: translateX(-50px);}
-    100% {opacity: 1; transform: translateX(0);}
-  }
-  @keyframes slideInRight {
-    0% {opacity: 0; transform: translateX(50px);}
-    100% {opacity: 1; transform: translateX(0);}
-  }
-  @keyframes textGlow {
-    from {text-shadow: 0 0 5px #b8416a;}
-    to {text-shadow: 0 0 20px #ff8bb2, 0 0 30px #b8416a;}
-  }
-  @keyframes glow {
-    from {box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);}
-    to {box-shadow: 0 8px 25px rgba(255, 120, 160, 0.7);}
-  }
-  @keyframes beat {
-    0%, 100% { transform: rotate(-45deg) scale(1); }
-    50% { transform: rotate(-45deg) scale(1.2); }
-  }
-  @keyframes pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.3);}
-    100% {transform: scale(1);}
-  }
-
-  /* Scroll reveal effect */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Responsive Design */
-  @media (max-width: 900px) {
     header h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      animation: textGlow 3s infinite alternate;
     }
-    nav a {
-      font-size: 0.95rem;
-    }
-    .gallery img {
-      flex: 1 1 calc(50% - 10px);
-      height: auto;
-    }
-  }
-  @media (max-width: 600px) {
+
     header p {
-      font-size: 1rem;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #a0526a;
+      animation: fadeInUp 1.8s ease;
     }
-    header h1 {
-      font-size: 1.75rem;
-    }
-    .gallery img {
-      flex: 1 1 100%;
-      width: 100%;
-    }
-    .event h3 {
-      font-size: 1.1rem;
-    }
-    .wishes, .birthday-wishes {
-      font-size: 1rem;
-    }
+
+    /* Navigation */
     nav {
-      flex-direction: column;
-      gap: 10px;
+      text-align: center;
+      margin: 25px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      animation: fadeInUp 2s ease;
     }
-  }
-</style>
-</head>
-<body>
 
-<header>
-  <h1>Our Love Story & Memories<span class="heart"></span></h1>
-  <p>A journey of us, cherished moments & dreams ahead</p>
-</header>
+    nav a {
+      margin: 0 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 5px;
+      transition: transform 0.3s ease;
+    }
 
-<nav>
-  <a href="#birthday">Birthday Wishes</a>
-  <a href="#story">Love Story</a>
-  <a href="#memories">Memories</a>
-  <a href="#wishes">Wishes</a>
-</nav>
+    nav a:hover {
+      transform: scale(1.1) rotate(-2deg);
+    }
 
-<div class="container">
+    nav a::after {
+      content: '';
+      position: absolute;
+      background: #b8416a;
+      height: 3px;
+      width: 0;
+      left: 50%;
+      bottom: 0;
+      transition: 0.3s ease;
+      border-radius: 5px;
+    }
 
-<!-- <section id="birthday" class="reveal">
-  <h2>Birthday Wishes & Dreams</h2>
-  <p class="birthday-wishes">
-    Here are some special birthday wishes and dreams I have for you and us:
-    <ul>
-      <li>Happy Birthday, my love! Every moment with you is a blessing...</li>
-      <li>On your special day, I dream of traveling the world hand in hand...</li>
-      <li>I wish to celebrate many more birthdays with you...</li>
-      <li>You are the light of my life, and this birthday I promise...</li>
-      <li>My desire is simply to wake up next to you forever.</li>
-    </ul>
-  </p>
-</section>
+    nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
 
-<section id="story" class="reveal">
-  <h2>Our Love Story Timeline</h2>
-  <div class="timeline">
-    <div class="event"><h3>First Met - January 2019</h3><p>It all started that chilly winter evening...</p></div>
-    <div class="event"><h3>First Date - February 2019</h3><p>Our hearts spoke loudest over candlelight...</p></div>
-    <div class="event"><h3>Trip to Paris - Summer 2021</h3><p>Under the Eiffel Tower, we promised forever...</p></div>
-    <div class="event"><h3>Moved in Together - December 2023</h3><p>Building a home filled with love...</p></div>
-    <div class="event"><h3>Looking Forward</h3><p>Our journey continues hand in hand...</p></div>
-  </div>
-</section>
+    /* Sections */
+    section {
+      background: white;
+      padding: 25px 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 15px rgba(184, 65, 106, 0.15);
+      margin-bottom: 30px;
+      animation: fadeInScale 1s ease forwards;
+    }
 
-<section id="memories" class="reveal">
-  <h2>Precious Memories Gallery</h2>
-  <div class="gallery">
-    <img src="./Gallery/shared image.jpg" alt="Winter memories"/>
-    <img src="./Gallery//shared image (1).jpg" alt="Coffee date"/>
-    <img src="./Gallery//shared image (2).jpg" alt="Paris trip"/>
-    <img src="./Gallery/shared image (3).jpg" alt="Happy together"/>
-    <img src="./Gallery/shared image (4).jpg" alt="Winter memories"/>
-    <img src="./Gallery//shared image (5).jpg" alt="Paris trip"/>
-    <img src="./Gallery/shared image (6).jpg" alt="Happy together"/>
-    <img src="./Gallery/shared image (7).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (8).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (9).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (10).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (11).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (12).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (13).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (14).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (15).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (16).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (17).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (18).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (19).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (20).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (21).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (22).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (23).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (24).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (25).jpg" alt="Winter memories"/>
-    <img src="./Gallery/shared image (26).png" alt="Winter memories"/>
-    <video controls>
-      <source src="./Gallery/Shared Video.mp4" type="video/mp4" />
-    </video>
-  </div>
-</section>
+    /* Love Story Timeline */
+    .timeline {
+      border-left: 4px solid #b8416a;
+      margin-left: 15px;
+      padding-left: 20px;
+      position: relative;
+    }
 
-<section id="wishes" class="reveal">
-  <h2>My Wishes for Us</h2>
-  <p class="wishes">
-    My love, may every day bring us closer...
-    Here's to a lifetime of memories, love, and happiness - together forever.<span class="heart"></span>
-  </p>
-</section> -->
+    .event {
+      position: relative;
+      margin-bottom: 30px;
+      animation: slideInLeft 1s ease forwards;
+    }
 
-</div>
+    .event::before {
+      content: '';
+      position: absolute;
+      left: -14px;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      background: #b8416a;
+      border-radius: 50%;
+      border: 3px solid #fff0f5;
+      box-shadow: 0 0 10px 2px rgba(184, 65, 106, 0.5);
+      animation: pulse 2s infinite;
+    }
 
-<footer>
-  Made with ❤ for you.
-</footer>
+    /* Memories Gallery */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      animation: fadeIn 1.5s ease;
+    }
 
-<script>
-  // Scroll reveal animation
-  function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    for (const reveal of reveals) {
-      const windowHeight = window.innerHeight;
-      const revealTop = reveal.getBoundingClientRect().top;
-      const revealPoint = 150;
-      if (revealTop < windowHeight - revealPoint) {
-        reveal.classList.add('active');
-      } else {
-        reveal.classList.remove('active');
+    .gallery img {
+      flex: 1 1 calc(25% - 15px);
+      /* max-width: 100%; */
+      height: 150px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(184, 65, 106, 0.5);
+      animation: glow 1s ease infinite alternate;
+      height: 100%;
+    }
+
+    .gallery video {
+      flex: 1 1 calc(25% - 15px);
+      /* max-width: 100%; */
+      height: 150px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery video:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(184, 65, 106, 0.5);
+      animation: glow 1s ease infinite alternate;
+      height: 100%;
+    }
+
+    /* Wishes */
+    .wishes,
+    .birthday-wishes {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #88304e;
+      padding: 15px;
+      border-left: 5px solid #b8416a;
+      background: #fff5f8;
+      border-radius: 10px;
+      animation: slideInRight 1.2s ease forwards;
+    }
+
+    .birthday-wishes {
+      background: #fff0f5;
+      color: #7f3a57;
+    }
+
+    .birthday-wishes ul {
+      padding-left: 20px;
+      margin-top: 15px;
+    }
+
+    .birthday-wishes li {
+      margin-bottom: 10px;
+      font-weight: 500;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Animated Hearts */
+    .heart {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-left: 6px;
+      position: relative;
+      transform: rotate(-45deg);
+      animation: beat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #b8416a;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: 0;
+      left: 10px;
+    }
+
+    .heart::after {
+      left: 0;
+      top: -10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #b8416a;
+      padding: 20px;
+      animation: fadeInUp 2s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-  }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
-</script>
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes textGlow {
+      from {
+        text-shadow: 0 0 5px #b8416a;
+      }
+
+      to {
+        text-shadow: 0 0 20px #ff8bb2, 0 0 30px #b8416a;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 5px 12px rgba(184, 65, 106, 0.3);
+      }
+
+      to {
+        box-shadow: 0 8px 25px rgba(255, 120, 160, 0.7);
+      }
+    }
+
+    @keyframes beat {
+
+      0%,
+      100% {
+        transform: rotate(-45deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(-45deg) scale(1.2);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Scroll reveal effect */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        font-size: 0.95rem;
+      }
+
+      .gallery img {
+        flex: 1 1 calc(50% - 10px);
+        height: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header p {
+        font-size: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.75rem;
+      }
+
+      .gallery img {
+        flex: 1 1 100%;
+        width: 100%;
+      }
+
+      .event h3 {
+        font-size: 1.1rem;
+      }
+
+      .wishes,
+      .birthday-wishes {
+        font-size: 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Our Love Story & Memories<span class="heart"></span></h1>
+    <p>A journey of us, cherished moments & dreams ahead</p>
+  </header>
+
+  <nav>
+    <a href="#birthday">Birthday Wishes</a>
+    <a href="#story">Love Story</a>
+    <a href="#memories">Memories</a>
+    <a href="#wishes">Wishes</a>
+  </nav>
+
+  <div class="container">
+
+    <section id="birthday" class="reveal">
+      <h2>Birthday Wishes & Dreams</h2>
+      <p class="birthday-wishes">
+        Here are some special birthday wishes and dreams I have for you and us:
+      <ul>
+        <li>Happy birthday my love!!! I appreciate every little thing you do for us—your support, your patience, and the
+          way you always make daily life better</li>
+        <li>On your birthday, I just want to say thank you for being real with me, sticking by me through both easy and
+          tough days, and always having my back.</li>
+        <li>I wish to celebrate countless birthdays by your side, each one more beautiful than the last, filled with
+          laughter, love, and the warmth of our togetherness.</li>
+        <li>You are the brightest star in my sky, the gentle light that guides my soul. This birthday, I promise to
+          cherish you endlessly and stand with you through every joy and challenge life brings.</li>
+        <li>My deepest desire is to wake up beside you every day, feeling the comfort of your love, and knowing that our
+          hearts will beat in harmony forever.</li>
+        <li>I feel lucky not just for the good days, but for having someone like you to lean on when things are messy or
+          uncertain. That’s what makes our relationship strong.</li>
+        <li>My wish is that we always keep being there for each other, facing challenges as a team and enjoying the good
+          times together, one step at a time.</li>
+      </ul>
+      </p>
+    </section>
+
+    <section id="story" class="reveal">
+      <h2>Our Love Story Timeline</h2>
+      <div class="timeline">
+        <div class="event">
+          <h3 style="margin-left: 20px;">Proposal - December 11 2016</h3>
+          <p style="margin-left: 20px;">That chilly winter night turned into something unforgettable...</p>
+        </div>
+        <div class="event">
+          <h3 style="margin-left: 20px;">First Met - January 05 2017</h3>
+          <p style="margin-left: 20px;">It all started that chilly winter evening...</p>
+        </div>
+        <div class="event">
+          <h3 style="margin-left: 20px;">Love Shared with Amma – January 20 2025</h3>
+          <p style="margin-left: 20px;">On that heartfelt day, You finally shared our love story with your mom, and she
+            passed it to your Appa on that same day. It felt
+            like the first step toward making our dreams a beautiful reality.</p>
+        </div>
+
+        <div class="event">
+          <h3 style="margin-left: 20px;">Appa’s Blessing – february 11 2025</h3>
+          <p style="margin-left: 20px;">When your dad accepted our love with a warm heart, it felt as though we were
+            building the foundation of a home
+            filled with trust, respect, and endless affection.</p>
+        </div>
+
+        <div class="event">
+          <h3 style="margin-left: 20px;">Families United – May 10, 2025</h3>
+          <p style="margin-left: 20px;">Both families came together with smiles and blessings, marking a new chapter of
+            togetherness and shared
+            happiness in our journey of love.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="memories" class="reveal">
+      <h2>Precious Memories Gallery</h2>
+      <div class="gallery">
+        <img src="./Gallery/shared image.jpg" alt="Winter memories" />
+        <img src="./Gallery//shared image (1).jpg" alt="Coffee date" />
+        <img src="./Gallery//shared image (2).jpg" alt="Paris trip" />
+        <img src="./Gallery/shared image (3).jpg" alt="Happy together" />
+        <img src="./Gallery/shared image (4).jpg" alt="Winter memories" />
+        <img src="./Gallery//shared image (5).jpg" alt="Paris trip" />
+        <img src="./Gallery/shared image (6).jpg" alt="Happy together" />
+        <img src="./Gallery/shared image (7).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (8).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (9).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (10).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (11).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (12).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (13).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (14).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (15).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (16).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (17).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (18).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (19).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (20).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (21).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (22).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (23).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (24).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (25).jpg" alt="Winter memories" />
+        <img src="./Gallery/shared image (26).png" alt="Winter memories" />
+        <img src="./Gallery/-596517562.png" alt="Winter memories" />
+        <img src="./Gallery/1000075016.jpg" alt="Winter memories" />
+        <img src="./Gallery/1722082208751.jpg" alt="Winter memories" />
+        <img src="./Gallery/1742320531630.jpg" alt="Winter memories" />
+        <img src="./Gallery/20230521_192518.jpg" alt="Winter memories" />
+        <img src="./Gallery/20230603_083407.jpg" alt="Winter memories" />
+        <img src="./Gallery/20230625_222108.jpg" alt="Winter memories" />
+        <img src="./Gallery/20230903_205003.jpg" alt="Winter memories" />
+        <img src="./Gallery/20231010_232610.jpg" alt="Winter memories" />
+        <img src="./Gallery/20231010_232701.jpg" alt="Winter memories" />
+        <img src="./Gallery/20240225_195213.jpg" alt="Winter memories" />
+        <img src="./Gallery/20240611_111414.jpg" alt="Winter memories" />
+        <img src="./Gallery/20240612_073308.jpg" alt="Winter memories" />
+        <img src="./Gallery/20240622_220132.jpg" alt="Winter memories" />
+        <img src="./Gallery/20240622_220147.jpg" alt="Winter memories" />
+        <img src="./Gallery/20240812_070840.jpg" alt="Winter memories" />
+        <img src="./Gallery/20241009_111430.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250309_202411.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250309_224423.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250309_224607.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250518_223722.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250518_223725.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250525_210944.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250525_210950.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250525_211047.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250606_224057.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250609_010213.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250609_010215.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250609_010230.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250609_010250.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250609_010326.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250726_212521.jpg" alt="Winter memories" />
+        <img src="./Gallery/20250824_193617.jpg" alt="Winter memories" />
+        <img src="./Gallery/_DSC0964.JPG" alt="Winter memories" />
+        <img src="./Gallery/DSC_0034.JPG" alt="Winter memories" />
+        <img src="./Gallery/DSC_0036.JPG" alt="Winter memories" />
+        <img src="./Gallery/DSC_0037.JPG" alt="Winter memories" />
+        <img src="./Gallery/file_000000001d4461f9b457e57ceb5bc9e3.png" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221126-WA0011.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221128-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221203-WA0027.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221203-WA0029.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221205-WA0019.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221205-WA0022.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221215-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20221227-WA0010.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20230109-WA0015.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20240408-WA0006.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20240502-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20241012-WA0024.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20241012-WA0025.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20241111-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20241204-WA0024.jpeg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20241214-WA0030.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250101-WA0013.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250101-WA0014.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250112-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250120-WA0000.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250122-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250123-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250127-WA0003.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250127-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250127-WA0011.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250127-WA0012.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250127-WA0013.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250201-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250209-WA0062.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250209-WA0064.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250209-WA0065.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250210-WA0015.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250212-WA0010.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250215-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250215-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250222-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250224-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250224-WA0034.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250304-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250304-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250304-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250304-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250304-WA0013.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250304-WA0021.jpeg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250305-WA0000.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250307-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250307-WA0003.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250310-WA0020.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250310-WA0022.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250310-WA0024.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250310-WA0030.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250313-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250313-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250313-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250314-WA0010.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250315-WA0008.jpeg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250317-WA0000.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250321-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250324-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250324-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250324-WA0014.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250324-WA0015.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250328-WA0016.jpeg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250331-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250331-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250403-WA0006.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250418-WA0017.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250426-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250429-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250430-WA0000.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250430-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250501-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250501-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250502-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0006.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0021.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0024.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0027.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0038.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0050.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0054.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0074.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0079.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0082.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0096.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0102.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0108.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0112.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0116.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0121.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0130.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0136.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0141.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250505-WA0146.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250506-WA0010.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250518-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250520-WA0006.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250520-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250520-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250520-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0015.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0017.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0027.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0045.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0059.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250521-WA0061.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250526-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250526-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250526-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250526-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250531-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250531-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250604-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250604-WA0004.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250712-WA0003.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250714-WA0011.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250714-WA0018.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250728-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250806-WA0003.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250806-WA0005.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250809-WA0010.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250809-WA0011.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250812-WA0006.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250816-WA0010.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250817-WA0020.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250817-WA0032.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250817-WA0033.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250817-WA0042.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250817-WA0052.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250817-WA0054.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250822-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250822-WA0030.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250824-WA0006.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250906-WA0000.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250925-WA0003.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250928-WA0007.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20250928-WA0009.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20251004-WA0001.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20251004-WA0002.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG-20251004-WA0008.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG_0518.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG_0508.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG_20230903_210846.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG_20241216_012431_810.webp" alt="Winter memories" />
+        <img src="./Gallery/IMG_20241231_234217.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG_20250101_015515.jpg" alt="Winter memories" />
+        <img src="./Gallery/IMG_20250403_194335_908.webp" alt="Winter memories" />
+        <img src="./Gallery/Picsart_23-08-13_11-43-51-416_with_bgc.png" alt="Winter memories" />
+        <img src="./Gallery/Picsart_24-06-20_15-49-29-108.png" alt="Winter memories" />
+        <img src="./Gallery/Picsart_25-02-17_23-36-22-914.jpg" alt="Winter memories" />
+        <img src="./Gallery/Picsart_25-02-18_00-11-36-781.jpg" alt="Winter memories" />
+        <img src="./Gallery/Screenshot_20250123-114100_LinkedIn.jpg" alt="Winter memories" />
+        <img src="./Gallery/Screenshot_20250227-131220_Instagram.jpg" alt="Winter memories" />
+        <img src="./Gallery/Screenshot_20250407-104225_Instagram.jpg" alt="Winter memories" />
+        <img src="./Gallery/Screenshot_20250410-174358_Instagram.jpg" alt="Winter memories" />
+        <img src="./Gallery/Screenshot_20250820-221139_Instagram.jpg" alt="Winter memories" />
+        <img src="./Gallery/Snapchat-2009111812.jpg" alt="Winter memories" />
+        <video controls>
+          <source src="./Gallery/Shared Video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section id="wishes" class="reveal">
+      <h2>My Wishes for Us</h2>
+      <p class="wishes">
+        My love, may every day bring us closer...
+        Here's to a lifetime of memories, love, and happiness - together forever.<span class="heart"></span>
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    Made with ❤ for you.
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (const reveal of reveals) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveal.getBoundingClientRect().top;
+        const revealPoint = 150;
+        if (revealTop < windowHeight - revealPoint) {
+          reveal.classList.add('active');
+        } else {
+          reveal.classList.remove('active');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 </body>
+
 </html>
